@@ -19,7 +19,21 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
             <MenuButton as={Button} rightIcon={<BsChevronDown />}>
                 {selectedPlatform?.name || 'Platforms'}
             </MenuButton>
-            <MenuList>
+            <MenuList 
+                maxH="500px" 
+                overflowY='auto' 
+                css={{
+                "&::-webkit-scrollbar": {
+                    width: "8px",
+                    borderRight: "8px solid transparent"
+                },
+                "&::-webkit-scrollbar-thumb": {
+                    backgroundColor: "#9496A1",
+                    borderRadius: "8px",
+                    width: "16px",
+                    
+                },
+            }}>
                 {data.map(platform => <MenuItem onClick={() => onSelectPlatform(platform)} key={platform.id}>{platform.name}</MenuItem>)}
             </MenuList>
         </Menu>
