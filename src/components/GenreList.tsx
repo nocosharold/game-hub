@@ -1,9 +1,12 @@
-import { HStack, List, ListItem, Image, Text } from "@chakra-ui/react";
+import { HStack, List, ListItem, Image, Text, CircularProgress } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
 const GenreList = () => {
-    const { data } = useGenres();
+    const { data, isLoading, error } = useGenres();
+
+    if (error) return null
+    if (isLoading) return <CircularProgress isIndeterminate trackColor='transparent' color='gray.300' />;
 
     return (
         <List>
