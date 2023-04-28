@@ -1,5 +1,6 @@
-import { HStack, Image } from '@chakra-ui/react'
-import logo from '../assets/logo.webp';
+import { HStack, Image, useColorMode } from '@chakra-ui/react'
+import logoLight from '../assets/logo.webp';
+import logoDark from '../assets/logoDark.webp';
 import ColorModeSwitch from './ColorModeSwitch';
 import SearchInput from './SearchInput';
 
@@ -8,6 +9,9 @@ interface Props {
 }
 
 const NavBar = ({ onSearch }: Props) => {
+	const { colorMode } = useColorMode();
+	const logo = colorMode === 'dark' ? logoDark : logoLight;
+
 	return (
 	<HStack padding='16px'>
 		<Image src={logo} boxSize='60px' />
